@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 
 
-
+{/* onSubmit={this.postMessage} */}
 class  FriendFormTwo extends React.Component{
   constructor(props){
     super(props);
@@ -22,7 +22,7 @@ class  FriendFormTwo extends React.Component{
 
 render(){
   return(
-      <form onSubmit={this.postMessage}>
+      <form > 
       <input 
       type="text"
       value={this.props.age}
@@ -51,8 +51,8 @@ render(){
         name="name"
         onChange={this.props.handleChanges}
       />
-      <button onClick={this.props.updatelist}>Update FriendList</button>
-      <button type="submit">Post Contact</button>
+      <button onClick={this.props.updateList}>Update FriendList</button>
+      {/*<button type="submit">Post Contact</button> */}
     </form>
 
   )

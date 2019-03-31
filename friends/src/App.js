@@ -35,7 +35,7 @@ handleChanges = typingEvent=>{
 }
 
 updateList = submitEvent => {
-  console.log('update invoked')
+  
   submitEvent.preventDefault();
   const newFriend ={
     age: this.state.age,
