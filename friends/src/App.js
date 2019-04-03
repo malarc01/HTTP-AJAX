@@ -23,7 +23,6 @@ class App extends Component {
 componentDidMount(){
   console.log('CDM');
   axios.get('http://localhost:5000/friends')
-  
   .then(objectArrays=>this.setState({friendData:objectArrays.data}))
   .catch(err=>console.log('err'));
 }
@@ -34,44 +33,33 @@ handleChanges = typingEvent=>{
   this.setState({[typingEvent.target.name]:typingEvent.target.value});
 }
 
-updateList = submitEvent => {
-  
-  submitEvent.preventDefault();
-  const newFriend ={
-    age: this.state.age,
-    email: this.state.email,
-    id: this.state.id,
-    name: this.state.name
-  };
-  this.setState({
-    friendData:[...this.state.friendData, newFriend]
-  });
+updateList = friendObject => { 
+  axios.post('http://localhost:5000/friends/', friendObject)
+  .then((res)=>{console.log('res')})
+  .catch(err=>{console.log('err')})
+ 
 }
 
-postMessage = submit =>{
-  submit.preventDefault();
-  axios.post('http://localhost:5000/friends/', submit)
-  .then((res)=>{console.log(res)})
-  .catch(err=>{console.log(err)})
-}
+
+
+
   render() {
     console.log(this.props);
     console.log(this.state.friendData)
     return (
       <div className="App">
         <header className="App-header">
-          
-          <h2>{this.state.friendData.map(file=><FriendDisplayList data={file} />)}</h2>
-          <h1>from app.js</h1>
-          <FriendFormTwo
+        <FriendFormTwo
           age={this.state.age}
           email={this.state.email}
           id={this.state.id}
           name={this.state.name}
           handleChanges={this.handleChanges}
-          postMessage={this.postMessage}
           updateList={this.updateList}
           />
+          <h2>{this.state.friendData.map(friendObject=><FriendDisplayList key={friendObject.id} data={friendObject} />)}</h2>
+          <h1>from app.js</h1>
+          
           
           
       

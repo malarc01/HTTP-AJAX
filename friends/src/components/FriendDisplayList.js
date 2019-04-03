@@ -10,7 +10,7 @@ class FriendDisplayList extends Component {
   constructor(props) {
     super(props);
     this.state = {
-       friendData: '[]', 
+       friendData: 'x', 
        
     };
     
@@ -27,7 +27,7 @@ class FriendDisplayList extends Component {
         <h2>Friend is {this.props.data.age} years old. </h2>
         <h3>Email: {this.props.data.email} </h3>
         <h4>ID is {this.props.data.id} </h4>
-        <h5>Goes by {this.props.data.name} </h5>
+        <h5>First Name is "{this.props.data.name}" </h5>
         <h6>From Component FriendDisplayList</h6>
         </header>
         
